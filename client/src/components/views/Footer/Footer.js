@@ -9,10 +9,7 @@ function Footer (){
 
     return (
         <div>
-          <Header/>
-          <Header/>
-          
-          <Footer/>
+          <h3>footer ...</h3>
         </div>
   )
 }

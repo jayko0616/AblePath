@@ -12,7 +12,6 @@ const Header = () => {
   return(
     <header className='header'>
       <div>
-        
         <div className='menu'>
           <MenuItem to={'/'}>홈</MenuItem>
           <MenuItem to={'/aboutus'}>About us</MenuItem>

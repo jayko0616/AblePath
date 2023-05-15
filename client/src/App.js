@@ -9,7 +9,7 @@ import {
 import MainPage from './components/views/MainPage/MainPage'
 import AbleLabelPage from './components/views/AbleLabelPage/AbleLabelPage'
 import AboutUsPage from './components/views/AboutUsPage/AboutUsPage'
-import NaviPage from './components/views/MainPage/MainPage'
+import NaviPage from './components/views/NaviPage/NaviPage'
 import TransportationPage from './components/views/TransportationPage/TransportationPage'
 
 

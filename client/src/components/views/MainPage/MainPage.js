@@ -31,13 +31,13 @@ function MainPage()  {
  const [ isOn, setIsOn] = React.useState(false); 
 
   return (
-    <div className="center">
+    <div className='center'>
       <Header />
       <body>
         <h1>Main Page</h1>
-        <h1 className="right">
+        <h1>
           <div>
-          <button className='searchBtn' onClick= { () => setIsOn(!isOn)}> 모달 생성</button>
+          <button className='searchBtn' onClick= { () => setIsOn(!isOn)}>Search</button>
               { isOn ? <Modal onOff={setIsOn}/> : ''}
           </div>
         </h1>

@@ -21,7 +21,7 @@ function MainPage()  {
      <>
         <div class="dim"> </div>  
         <div class="modal"> 
-         <div> <button onClick={ () => { onOff(false)}}> X </button>  </div>
+         <div> <button class="exitBtn" onClick={ () => { onOff(false)}}> X </button>  </div>
          <div> 모달 만들기 성공! </div>
         </div>
      </>

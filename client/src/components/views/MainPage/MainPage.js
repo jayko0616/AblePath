@@ -37,7 +37,7 @@ function MainPage() {
             <div className="popup">
             <h1>팝업 내용</h1>
             <button onClick={togglePopup}>팝업 닫기</button>
-        </div>
+            </div>
       )}
           </div>
         </h1>

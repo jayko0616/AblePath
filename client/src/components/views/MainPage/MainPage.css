@@ -41,8 +41,18 @@
 
 .exitBtn{
     float: right;
-    margin-right: 10px;
+    margin-right: 5px;
     margin-top: 5px;
     background-color: red;
     color: white;
 }
+
+.modal input {
+    font-size: large;
+    font-family:'Segoe UI';
+    width: 90%;
+    padding: 20px;
+    margin-top: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }

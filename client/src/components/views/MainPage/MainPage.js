@@ -22,13 +22,15 @@ function MainPage()  {
         <div class="dim"> </div>  
         <div class="modal"> 
          <div> <button class="exitBtn" onClick={ () => { onOff(false)}}> X </button>  </div>
-         <div> 모달 만들기 성공! </div>
+          <div class="input">
+            <input type="text" placeholder="검색어를 입력하세요" />
+          </div>
         </div>
      </>
     )
  }
   
- const [ isOn, setIsOn] = React.useState(false); 
+  const [ isOn, setIsOn] = React.useState(false); 
 
   return (
     <div className='center'>

@@ -25,6 +25,7 @@ function MainPage() {
     };
   
     function renderModal() {
+
       return (
         <>
           <div className="dim"> </div>

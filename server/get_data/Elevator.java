@@ -11,6 +11,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 class PlaceElevator{
     String baseURL;
@@ -21,14 +24,17 @@ class PlaceElevator{
     InputStream inputStream;
     
     PlaceElevator(){
-        baseURL = "http://safemap.go.kr/openApiService/data/getPblfcltElvtrChckSttusData.do";
-        serviceKey = "OA4F9U8I-OA4F-OA4F-OA4F-OA4F9U8IQT";
-        pageNo = "1";
+        baseURL = "http://safemap.go.kr/openApiService/data/getPblfcltElvtrChckSttusData.do"; 
+        serviceKey = "OA4F9U8I-OA4F-OA4F-OA4F-OA4F9U8IQT"; // 행정안전부에서 발급받은 api key 
+        pageNo = "1"; 
         numOfRows = "10";
         type = "JSON";
     }
     
-   public void mkURL() {
+    /**
+     * URL을 구성하는 함수
+     */
+    public void mkURL() {
 	   strBuilder = new StringBuilder(baseURL);
 	   
 	   try {
@@ -48,7 +54,11 @@ class PlaceElevator{
        }
 	   
    }
-   
+   /**
+    * URL에 대해 데이터를 받아오는 함수
+    * Redirection Error(302) 발생 시, 해당하는 URL로 새로 구성 후에
+    * InputStream 객체에 데이터를 받아온다.
+    */
    public void getInputStream(URL url) throws Exception {
 	   int redirectedCount = 0;
 	   
@@ -81,29 +91,47 @@ class PlaceElevator{
    }
    
    
-    
+    /***
+     * 읽어온 데이터를 출력하는 함수
+     * InputStream에 저장된 데이터를 라인 단위로 출력한다.
+     */
     public void readData() throws Exception{
-    	mkURL();
+    	BufferedReader reader;
+        String line;
+        StringBuffer response;
+
+        mkURL();
     	
     	try {
-    		//InputStream inputStream = con.getInputStream();
+    	
     		getInputStream(url);
-        	BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        	reader = new BufferedReader(new InputStreamReader(inputStream));
+        	response = new StringBuffer();
         	
-        	
-        	
-        	while(true) {
-        		String line = reader.readLine();
-        		if(line == null) break;
-        		else    System.out.println(line);
+        	while((line = reader.readLine()) != null) {
+        		System.out.println(line);
+        		response.append(line);
         	}
         	
-        	reader.close();
+        	String jsonStr = response.toString();
+        	JSONParser parser = new JSONParser();
+        	JSONObject obj = null;
         	
+        	try {
+        		obj = (JSONObject)parser.parse(jsonStr);
+        	} catch (Exception e) {
+        		System.out.println("데이터 변환 실패 ");
+        		e.printStackTrace();
+        	}
         	
+        	System.out.println(obj);
+        	System.out.println(obj.get("BULD_NM"));
+
+            reader.close(); // 연결 해제
+
     	} catch (IOException e) {
     		e.printStackTrace();
-    	}
+    	} 
     }
 }
 

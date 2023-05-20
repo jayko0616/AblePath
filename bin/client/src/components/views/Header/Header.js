@@ -24,8 +24,10 @@ const Header = () => {
     
         <ul className="navbar__menu">
           <li><MenuItem to={'/'}>홈</MenuItem></li>
-          <li><MenuItem to={'/route'}>길찾기</MenuItem></li>
-          <li><MenuItem to= {'/info'}>교통정보</MenuItem></li>
+          <li><MenuItem to={'/aboutus'}>About us</MenuItem></li>
+          <li><MenuItem to= {'/transportation'}>교통 서비스</MenuItem></li>
+          <li><MenuItem to={'/ablelabel'}>에이블딱지</MenuItem></li>
+          <li><MenuItem to={'/navi'}>내비</MenuItem></li>
         </ul>
         
         <a href="#" className="navbar__toggleBtn">메뉴</a>

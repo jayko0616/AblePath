@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './style.css'
 
 
 const MenuItem = ({active, children, to}) => (
@@ -7,19 +8,30 @@ const MenuItem = ({active, children, to}) => (
 );
 
 const Header = () => {
-
-
   return(
+    
     <header className='header'>
-      <div>
-        <div className='menu'>
-          <MenuItem to={'/'}>홈</MenuItem>
-          <MenuItem to={'/aboutus'}>About us</MenuItem>
-          <MenuItem to= {'/transportation'}>교통 서비스</MenuItem>
-          <MenuItem to={'/ablelabel'}>에이블딱지</MenuItem>
-          <MenuItem to={'/navi'}>내비</MenuItem>
+    <div className="header">
+      <title>Nav Bar</title>
+    </div>
+
+    <div className="body">
+      <nav className="navbar">
+        <div className="navbar__logo">
+          <i className="fas fa-blog"></i>
+          <a href="">Able Path</a>
         </div>
-      </div>
+    
+        <ul className="navbar__menu">
+          <li><MenuItem to={'/'}>홈</MenuItem></li>
+          <li><MenuItem to={'/route'}>길찾기</MenuItem></li>
+          <li><MenuItem to= {'/info'}>교통정보</MenuItem></li>
+        </ul>
+        
+        <a href="#" className="navbar__toggleBtn">메뉴</a>
+      </nav>
+    </div>
+    <script src="main.js"></script> 
     </header>
   )
 }

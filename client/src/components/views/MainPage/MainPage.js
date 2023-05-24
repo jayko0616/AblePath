@@ -2,9 +2,45 @@ import React, {useEffect} from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import '../MainPage/MainPage.css';
+import { useNavigate } from 'react-router';
 
-const { kakao } = window;
+function MainPage() {
 
+  /**
+   * 페이지 이동 관련 변수와 함수들
+   * func name : 'to' + pagename
+   */
+  const navigate = useNavigate();
+
+  const toInfoPage = (event) => {
+    navigate('/info')
+  }
+
+  const toRouterPage = (event) => {
+    navigate('/route')
+  }
+
+  return (
+    <div>
+      <Header/>
+      <body>
+        <button id="info" onClick={toInfoPage}>
+          교통 정보
+        </button>
+        <button id="route" onClick={toRouterPage}>
+          길찾기
+        </button>
+      </body>
+      <Footer/>
+    </div>
+
+  )
+}
+
+/**기존 코드입니다
+ * 
+ * 
+ const { kakao } = window;
 function initializeMap() {
   const container = document.getElementById('map'); // 지도 담을 영역의 DOM 레퍼런스
   const options = {
@@ -68,6 +104,7 @@ function MainPage() {
       </div>
     );
   }
+  */
   
   export default MainPage;
   

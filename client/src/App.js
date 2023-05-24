@@ -7,10 +7,10 @@ import {
   Routes,
 } from "react-router-dom";
 import MainPage from './components/views/MainPage/MainPage'
-import AbleLabelPage from './components/views/AbleLabelPage/AbleLabelPage'
-import AboutUsPage from './components/views/AboutUsPage/AboutUsPage'
-import NaviPage from './components/views/NaviPage/NaviPage'
-import TransportationPage from './components/views/TransportationPage/TransportationPage'
+import RoutePage from './components/views/RoutePage/RoutePage'
+import InfoPage from './components/views/InfoPage/InfoPage'
+import SubwayPage from './components/views/InfoPage/SubwayPage'
+
 
 
 function App() {
@@ -18,10 +18,9 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<MainPage/>}></Route>
-      <Route exact path="/ablelabel" element={<AbleLabelPage/>}></Route>
-      <Route exact path="/aboutus" element={<AboutUsPage/>}></Route>
-      <Route exact path="/navi" element={<NaviPage/>}></Route>
-      <Route exact path="/transporation" element={<TransportationPage/>}></Route>
+      <Route exact path="/route" element={<RoutePage/>}></Route>
+      <Route exact path="/info" element={<InfoPage/>}></Route>
+      <Route exact path="/info/subway" element={<SubwayPage/>}></Route>
     </Routes>
     </BrowserRouter>
   );

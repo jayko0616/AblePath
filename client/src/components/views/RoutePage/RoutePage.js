@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import Map from './Map';
+import Path from './Path';
+import Search from './Search';
+import './RoutePage.css';
 
 
 function RoutePage() {
@@ -8,6 +12,11 @@ function RoutePage() {
   return (
     <div>
       <Header />
+      <Search id='search'></Search>
+      <div id = 'routeDisplay'>
+        <Map id = 'map'></Map>
+        <Path id ='path'></Path>
+      </div>
       Route page 입니다.
       <Footer />
     </div>

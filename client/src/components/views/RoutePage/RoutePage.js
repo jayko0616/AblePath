@@ -12,12 +12,16 @@ function RoutePage() {
   return (
     <div>
       <Header />
-      <Search id='search'></Search>
-      <div id = 'routeDisplay'>
-        <Map id = 'map'></Map>
-        <Path id ='path'></Path>
+      <div class='route'>
+        <Search id='search'></Search>
+        
+        <div id = 'routeDisplay'>
+          <Map id = 'map'></Map>
+          <Path id ='path'></Path>
+        </div>
+        Route page 입니다.
+
       </div>
-      Route page 입니다.
       <Footer />
     </div>
   );

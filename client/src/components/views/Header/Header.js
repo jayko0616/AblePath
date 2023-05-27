@@ -21,7 +21,6 @@ const Header = () => {
           <i className="fas fa-blog"></i>
           <a href="">Able Path</a>
         </div>
-    
         <ul className="navbar__menu">
           <li><MenuItem to={'/'}>홈</MenuItem></li>
           <li><MenuItem to={'/route'}>길찾기</MenuItem></li>

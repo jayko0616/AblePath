@@ -1,0 +1,10 @@
+.subway-map-container{
+    position: relative;
+}
+
+.line{
+    position: absolute;
+}
+.footer {
+    position: relative;
+}

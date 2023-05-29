@@ -49,7 +49,7 @@ function BusPage() {
               </select>
             </div>
             <div className='busnum'>
-              <input type="text" value={BusNum} onChange={onBusNumHandler} required>버스 번호 입력</input>
+              <input type="text" value={BusNum} onChange={onBusNumHandler} placeholder="버스 번호 입력" required></input>
             </div>
             <div className='search'>
                   <button>

@@ -5,6 +5,7 @@ export function get_bus(dataToSubmit){
     .then(response => response.data)
 
     return{
+        type: "bus_search",
         payload: request
     }
 }

@@ -36,3 +36,16 @@ app.post('/info/subway/getStnCd', (req, res) => {
                 
         })
 })
+
+// import { get_stId } from "./data/Bus/lowbus/"
+
+// const express = require('express')
+// const bodyParser = require('body-parser');
+// const port = 5000;
+// const app = express();
+
+// app.post ('info/bus/get', function(req, res){
+//     return res.status(200)
+//         .json(get_stId(req));
+// })
+// >>>>>>> Stashed changes

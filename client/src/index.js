@@ -5,11 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitials';
 import * as ReactDOMClient from "react-dom/client";
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import store from './components/views/InfoPage/BusPage'
 
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

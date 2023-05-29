@@ -6,13 +6,26 @@ import reportWebVitals from './reportWebVitials';
 import * as ReactDOMClient from "react-dom/client";
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import store from './components/views/InfoPage/BusPage'
+import promiseMiddleware from 'redux-promise';
+import ReduxThunk from 'redux-thunk';
+import Reducer from './_reducers';
+import { configureStore } from '@reduxjs/toolkit'
+
+
+const devTools = window._REDUX_DEVTOOLS_EXTENSION_ &&
+                window._REDUX_DEVTOOLS_EXTENSION_();
+
+const store = configureStore({
+  reducer: Reducer,
+  middleware: [promiseMiddleware, ReduxThunk],
+  //devTools: devTools
+})
 
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
+    <Provider store = {store}>
+      <App/>
     </Provider>
   </React.StrictMode>
 );

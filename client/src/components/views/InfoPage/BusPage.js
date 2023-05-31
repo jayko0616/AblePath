@@ -9,20 +9,20 @@ function BusPage() {
   const dispatch = useDispatch();
 
   const [Region, setRegion] = useState("");
-  const [BusNum, setBusNum] = useState("");
+  const [Station, setStation] = useState("");
 
   const onRegionHandler = (event) => {
     setRegion(event.currentTarget.value);
   }
-  const onBusNumHandler = (event) => {
-    setBusNum(event.currentTarget.value);
+  const onStationHandler = (event) => {
+    setStation(event.currentTarget.value);
   }
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
     let body = {
       region_nm: Region,
-      bus_num: BusNum,
+      station_nm: Station,
     }
 
     console.log(body);
@@ -33,7 +33,6 @@ function BusPage() {
         console.log(response.payload);
     }
   })
-
 
   }
   return (
@@ -47,11 +46,19 @@ function BusPage() {
                 <option type="submit" value="none">=== 선택 ===</option>
                 <option type="submit" value="seoul">서울</option>
                 <option type="submit" value="kyengi">경기</option>
-                <option type="submit" value="busan">부산</option>       
+                <option type="submit" value="incheon">인천</option>
+                <option type="submit" value="sejong">세종</option>
+                <option type="submit" value="daejeon">대전</option>
+                <option type="submit" value="gwangju">광주</option>
+                <option type="submit" value="daegu">대구</option>
+                <option type="submit" value="busan">부산</option>
+                <option type="submit" value="ulsan">울산</option>       
+                <option type="submit" value="jeju">제주</option>
+
               </select>
             </div>
-            <div className='busnum'>
-              <input type="text" value={BusNum} onChange={onBusNumHandler} placeholder="버스 번호 입력" required></input>
+            <div className='station'>
+              <input type="text" value={Station} onChange={onStationHandler} placeholder="버스 정류장 입력" required></input>
             </div>
             <div className='search'>
                   <button>

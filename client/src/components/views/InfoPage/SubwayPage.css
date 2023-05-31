@@ -1,5 +1,6 @@
 .subway-map-container{
     position: relative;
+    background-color: white;
 }
 
 .line{
@@ -7,4 +8,7 @@
 }
 .footer {
     position: relative;
+}
+.line.on rect{
+    width: 200px;
 }

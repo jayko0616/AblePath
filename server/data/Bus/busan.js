@@ -21,6 +21,7 @@ axios({
     const items = JSON.parse(json);     //js에서 바로 변수로 사용할 수 있도록
     // console.log(json)
     const base = items.response.body.items.item;
+    console.log('Data',base);
     Object.keys(base).forEach(function(i) {
         console.log("버스 번호", base[i].lineno._text);
         if (base[i].lowplate1 == 1){
@@ -32,7 +33,7 @@ axios({
         if (base[i].lowplate1 == base[i].lowplate2 == 0){
             console.log("도착 정보 없음");
         }
-
+    
       });
 })
 

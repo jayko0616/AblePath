@@ -4,6 +4,7 @@ const port = 5000;
 const bodyParser = require('body-parser');
 
 const stn_nm_code = require('./data/Subway/stn-nm-code');
+const get_stId  = require ('./data/Bus/lowbus');
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -37,15 +38,20 @@ app.post('/info/subway/getStnCd', (req, res) => {
         })
 })
 
-// import { get_stId } from "./data/Bus/lowbus/"
+app.post ('/info/bus/get', function(req, res){
+    get_stId.get_stId(req.body)
+    .then(result => {
+        return res.status(200)
+             .json(result);
+    })
+})
+
+// 
 
 // const express = require('express')
 // const bodyParser = require('body-parser');
 // const port = 5000;
 // const app = express();
 
-// app.post ('info/bus/get', function(req, res){
-//     return res.status(200)
-//         .json(get_stId(req));
-// })
+// 
 // >>>>>>> Stashed changes

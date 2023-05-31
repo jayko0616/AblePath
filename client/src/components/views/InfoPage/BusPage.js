@@ -25,6 +25,8 @@ function BusPage() {
       bus_num: BusNum,
     }
 
+    console.log(body);
+    
     dispatch(get_bus(body))
       .then(response => {
       if(response.payload.getSuccess){

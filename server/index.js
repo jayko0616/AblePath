@@ -4,8 +4,9 @@ const port = 5000;
 const bodyParser = require('body-parser');
 
 const stn_nm_code = require('./data/Subway/stn-nm-code');
+const stn_info = require('./data/Subway/stn_info');
 const get_stId  = require ('./data/Bus/lowbus');
-
+const realtime_arrival = require('./data/Subway/realtimeArrivalSubway');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
@@ -23,7 +24,7 @@ app.post('/info/subway/getStnCd', (req, res) => {
             console.log("search_stn_id 실행 리턴값:\n", result);
 
             if(result.getSuccess === true){
-                console.log(`search_stn_id(${req.body.stn_nm}) getSuccess!`);
+                console.log(`search_stn_id(${req.body.stn_nm}) Success!`);
                 return res.status(200)
                     .json(result)
 
@@ -35,6 +36,37 @@ app.post('/info/subway/getStnCd', (req, res) => {
                 });
             }
                 
+        })
+})
+
+app.post('/info/subway/realtimeArrival', (req, res) => {
+    realtime_arrival.realtime_arrival(req.body)
+        .then(result => {
+            if(result.getSuccess === true) {
+                console.log(`realtimaArrival(${req.body.stn_nm}) Success!`);
+                return res.status(200)
+                .json(result)
+            }
+
+            else {
+                return res.json(result)
+            }
+        })
+})
+
+app.post('/info/subway/getStnInfo', (req, res) => {
+    stn_info.stn_info(req.body)
+        .then(result => {
+
+            if(result.getSuccess === true) {
+                console.log(`>>>>get_stn_info(${req.body.stn_nm}) Success!`)
+                return res.status(200)
+                    .json(result)
+            }
+            else {
+                console.log("get_stn_info failed");
+                return res.json(result)
+            }
         })
 })
 

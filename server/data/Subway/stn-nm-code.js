@@ -65,5 +65,4 @@ search_stn_id(body).then(result => {
     console.log(result);
 })
 */
-
 module.exports.search_stn_id = search_stn_id;

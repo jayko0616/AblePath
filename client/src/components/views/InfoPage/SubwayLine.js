@@ -43,9 +43,11 @@ const line = {
 };
 
 function LineComponent(props) {
+    /*
     useEffect(() => {
         console.log('LineComponent 렌더링:', props.selectedComponent)
     }, [props.selectedComponent]);
+    */
 
     
     const SelectLine = line[props.selectedComponent];

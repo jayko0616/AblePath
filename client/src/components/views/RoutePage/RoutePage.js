@@ -8,6 +8,7 @@ import './RoutePage.css';
 
 
 function RoutePage() {
+  
 
   return (
     <div>
@@ -19,8 +20,6 @@ function RoutePage() {
           <Map id = 'map'></Map>
           <Path id ='path'></Path>
         </div>
-        Route page 입니다.
-
       </div>
       <Footer />
     </div>

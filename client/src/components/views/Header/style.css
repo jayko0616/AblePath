@@ -6,12 +6,6 @@
     --bodybackground-color: lightgray;
   }
   
-  body { 
-    margin: 0;
-    background-color: var(--bodybackground-color);
-    font-family: 'STIX Two Math';
-  }
-  
   a {
     text-decoration: none;
     color: var(--text-color);

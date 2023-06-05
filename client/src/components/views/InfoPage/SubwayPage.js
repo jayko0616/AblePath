@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import { ReactComponent as SubwayMap } from '../../images/subway_map.svg';
-import './/SubwayPage.css';
+import './SubwayPage.css';
 import LineComponent from './SubwayLine';
 import { useDispatch } from 'react-redux';
 import { get_realtime_arrival } from '../../../_actions/subway_action';
@@ -15,7 +14,7 @@ function SubwayPage() {
   const [selectedLine, setSelectedLine] = useState(""); //지하철 라인 코드 ex. '1001'
   const [selectedLineTxt, setSelectedLineTxt] = useState(""); //지하철 라인 텍스트  ex. '1호선'
   const [selected, setSelected] = useState(false); //ALL : false , Others : true
-  const [realtime, setRealtime] = useState();
+  const [realtime, setRealtime] = useState(null);
   const dispatch = useDispatch();
   
   //selectedComponent가 변경될 때마다 다시 렌더링
@@ -81,7 +80,7 @@ function SubwayPage() {
     <div>
       <Header />
       <form>
-        <select name="show_line_route" onChange={show_line}>
+        <select className="show_line_route" onChange={show_line}>
           <option value="ALL">전체</option>
           <option value="1" data-line="1001" data-linetxt= "1호선">1호선</option>
           <option value="2" data-line="1002" data-linetxt= "2호선">2호선</option>
@@ -105,7 +104,8 @@ function SubwayPage() {
       <div className="subway-map-container" >
         
         <LineComponent selectedComponent = {selectedComponent} onClick={clickHandler}/>
-        {(selectedStn !== "") && <RealtimeBox className="realtimeBox" selectedStn = {selectedStn} realtime={realtime}/> }
+        {(realtime !== null) && <RealtimeBox  className="realtime" selectedStn = {selectedStn} 
+          realtime={realtime} selectedLineTxt = {selectedLineTxt} />}
 
         {/**선택된 라인 외에는 흐리게 나타내기 위한 요소 */}
         <div className={selected? "visible":"hidden"}>

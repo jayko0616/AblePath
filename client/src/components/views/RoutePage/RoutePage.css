@@ -1,9 +1,12 @@
-Map {
-    display: inline-block;
-    vertical-align: middle;
+.map{
+    margin-left: 0 auto;
+    width: 80%;
 }
-Path {
-    display: inline-block;
-    vertical-align: middle;
+.path {
+    margin-left: 0 auto;
+    width: 40%x;
 }
 
+#routeDisplay{
+    width: 100%;
+}

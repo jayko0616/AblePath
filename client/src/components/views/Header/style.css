@@ -1,28 +1,40 @@
 :root {
     --text-color: #f0f4f5;
-    --background-color: #263343;
-    --accent-color: orange;
+    --background-color: rgb(152, 187, 201);
+    --accent-color: #eccd70;
     --icons-color: rgb(152, 187, 201);
     --bodybackground-color: lightgray;
   }
+
   
   a {
     text-decoration: none;
     color: var(--text-color);
   }
   
+
+  .navbar__logo {
+    flex-direction:column;
+    align-items: center;
+    width: 100%;
+    display: inline-flex;
+    
+  }
+
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--background-color);
-    padding: 8px 12px;
+    padding: 0px;
     font-family: 'STIX Two Math';
+    font-size: large;
   }
   
   .navbar_logo i {
     color: var(--accent-color);
     padding-left: 0;
+    align-items: center;
   }
   
   .navbar_menu {
@@ -63,12 +75,20 @@
     align-items: center;
     width: 100%;
     list-style:none;
+    padding-inline-start: 0%;
   }
   
   .navbar__menu li {
     width: 100%;
     text-align: center;
+    padding-inline-start: 0%;
   }
+
+  .navbar__menu li:hover {
+    transform: scale(1.2);
+    transition: all 300ms ease-in;;
+  }
+
   .navbar__icons {
     justify-content: center;
     width: 100%;

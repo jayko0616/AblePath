@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import { ReactComponent as SubwayMap } from '../../images/subway_map.svg';
 import './SubwayPage.css';
@@ -81,7 +80,7 @@ function SubwayPage() {
     <div>
       <Header />
       <form>
-        <select name="show_line_route" onChange={show_line}>
+        <select className="show_line_route" onChange={show_line}>
           <option value="ALL">전체</option>
           <option value="1" data-line="1001" data-linetxt= "1호선">1호선</option>
           <option value="2" data-line="1002" data-linetxt= "2호선">2호선</option>
@@ -106,7 +105,7 @@ function SubwayPage() {
         
         <LineComponent selectedComponent = {selectedComponent} onClick={clickHandler}/>
         {(realtime !== null) && <RealtimeBox  className="realtime" selectedStn = {selectedStn} 
-          realtime={realtime} selectedLineTxt = {selectedLineTxt} /> }
+          realtime={realtime} selectedLineTxt = {selectedLineTxt} />}
 
         {/**선택된 라인 외에는 흐리게 나타내기 위한 요소 */}
         <div className={selected? "visible":"hidden"}>

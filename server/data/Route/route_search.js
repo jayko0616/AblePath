@@ -13,41 +13,49 @@ async function route_search(dataToSubmit) {
     try{
         const res = await axios.post(url, dataToSubmit, {headers})
         console.log(res.status);
-        console.log(res.data);
+        console.log(res.data.metaData.plan);
+
+        var minTransfer = 10;
+        var minTotaltime = 10000;
+        var minIdx = 0;
+
+        for(i = 0; i < dataToSubmit.count; i++){
+            var transCnt = parseInt(res.data.metaData.plan.itineraries[i].transferCount);
+            var time = parseInt(res.data.metaData.plan.itineraries[i].totalTime);
+            
+            if( transCnt < minTransfer){
+                minTransfer = transCnt;
+                minTotaltime = time;
+                minIdx = i;
+            }
+
+            else if(transCnt == minTransfer){
+                if(time < minTotaltime){
+                    minTotaltime = time;
+                    minIdx = i;
+                }
+            }
+        }
+
+        const list = res.data.metaData.plan.itineraries[minIdx];
+    
+        var json = {};
+        json.routeList = list; 
+        json.getSuccess = true;
+
+        console.log(json);
+        
+        return json;
+
     }
     catch(error) {
         console.log(error);
-    }
-    
-   /*
-    const options = {
-        method: 'POST',
-        url: 'https://apis.openapi.sk.com/transit/routes',
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/json',
-          appKey: 'X0Ry9Cesoeax9bJHR1q9y9QtYQH5uUhq3KI7BYLN'
-        },
-        data: {
-          startX: '126.926493082645',
-          startY: '37.6134436427887',
-          endX: '127.126936754911',
-          endY: '37.5004198786564',
-          lang: 0,
-          format: 'json',
-          count: 10,
-          searchDttm: '202301011200'
-        }
-    };
 
-    axios.request(options)
-        .then(function (response) {
-            console.log(response.data);
-         })
-        .catch(function (error) {
-            console.error(error);
-        });
-        */
+        return {
+            getSuccess: false
+        };
+    }
+
 }
 
 let body = {
@@ -55,14 +63,12 @@ let body = {
 	"startY": "37.63788539420793",
 	"endX": "127.030406594109",
 	"endY": "37.609094989686",
-	"count" : 1,
+	"count" : 5,
 	"lang": 0,
-	"format":"json"
+	"format":"json",
+    "searchDttm": '202301011200'
 }
 
-route_search(body)
+//route_search(body)
 
-/**
- res.result 결과 
-
- */
+module.exports.route_search = route_search

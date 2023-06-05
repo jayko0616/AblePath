@@ -1,13 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import './Subway_realtime.css';
 
 function RealtimeBox(props) {
-
-   // const [up_1st_dest, setUp_1st_dest] = useState("");
-    //const [up_2nd_dest, setUp_2nd_dest] = useState("");
-    //const [dn_1st_dest, setDn_1st_dest] = useState("");
-    //const [dn_2nd_dest, setDn_2nd_dest] = useState("");
-
     var up_1st_dest = "";
     var up_1st_arvlMsg2 = "";
     var up_2nd_dest = "";
@@ -50,16 +44,16 @@ function RealtimeBox(props) {
                 <div className="up">
                     <h3 className="updn" id="upline">상행</h3>
                     <div className="uprealtime">
-                        <h4>{up_1st_dest} {up_1st_arvlMsg2}</h4>
-                        <h4>{up_2nd_dest} {up_2nd_arvlMsg2}</h4>
+                        <span>{up_1st_dest} {up_1st_arvlMsg2}</span><br></br>
+                        <span>{up_2nd_dest} {up_2nd_arvlMsg2}</span>
                     </div>
                 </div>
             
                 <div claeeName="dn">
                     <h3 className="updn" id="dnline">하행</h3>
                     <div claeeName="dnrealtime">
-                        <h4>{dn_1st_dest} {dn_1st_arvlMsg2}</h4>
-                        <h4>{dn_2nd_dest} {dn_2nd_arvlMsg2}</h4>
+                        <span>{dn_1st_dest} {dn_1st_arvlMsg2}</span><br></br>
+                        <span>{dn_2nd_dest} {dn_2nd_arvlMsg2}</span>
                     </div>
                 </div>
             </div>

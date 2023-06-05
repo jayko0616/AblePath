@@ -15,6 +15,11 @@ import BusPage from './components/views/InfoPage/BusPage'
 
 function App() {
   return (
+    <div >
+      <div className='App-header'>
+        <img src={logo} className="App-logo" alt="logo"/>
+          <a>Able Path</a>
+      </div>
     <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<MainPage/>}></Route>
@@ -24,6 +29,7 @@ function App() {
       <Route exact path="/info/bus" element={<BusPage/>}></Route>
     </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 

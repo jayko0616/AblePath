@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {ReactComponent as SubwayMap} from '../../images/subway_map.svg'
 import {ReactComponent as Line1} from '../../images/line1.svg';
-//import Line1 from './Line1'
 import {ReactComponent as Line2} from '../../images/line2.svg';
 import {ReactComponent as Line3} from '../../images/line3.svg';
 import {ReactComponent as Line4} from '../../images/line4.svg';

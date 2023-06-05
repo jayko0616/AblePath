@@ -3,6 +3,7 @@ const app = express();
 const port = 5000;
 const bodyParser = require('body-parser');
 
+const get_route = require('./data/Route/route_search');
 const stn_nm_code = require('./data/Subway/stn-nm-code');
 const stn_info = require('./data/Subway/stn_info');
 const get_stId  = require ('./data/Bus/lowbus');
@@ -50,6 +51,20 @@ app.post('/info/subway/realtimeArrival', (req, res) => {
 
             else {
                 return res.json(result)
+            }
+        })
+})
+
+app.post('/route/path', (req, res) => {
+    get_route.route_search(req.body) 
+        .then(result => {
+            if(result.getSuccess === true) {
+                console.log("route_search Success!");
+                return res.status(200)
+                        .json(result)
+            }
+            else {
+                return res.json(result);
             }
         })
 })

@@ -1,41 +1,53 @@
 .realtime_container {
-    background-image: url("../../images/tooltip.png");
-    width: 500px;
-    height: 50px;
-    display: block;
-    
+    width: 300px;
+    height: 200px;
+    display: block;    
+    margin: 10px;
+    background-image: url('../../images/tooltip.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: -50em;
+    margin-right: 5em;
+    position: relative;
+    left: 70em;
 }
 
 .lineNm {
-    font-size: 2em;
+    font-size: 25px;
     text-align: center;
+    padding: 3px;
+    top: 32px;
+    position: relative;
 }
 
 .updn {
-    font-size: 1.5em;
+    font-size: 15px;
     text-align: left;
 }
 
 .dnrealtime{
-    text-align: left;
-   
+    text-align: left; 
+    font-size: 15px;
+    position:relative;
 }
 .uprealtime{
     text-align: left;
+    font-size: 15px;
 }
 
 .realtime_content {
     display: flex;
     justify-content: flex-start;
-    margin-left: 0px;
+    margin-right:auto;
 }
 
 .up{
-    width: 250px;
-    margin-left: 0px;
+    width: 150px;
+    height: 50px;
+    margin-left: auto;
 }
 .dn{
-    width: 250px;
+    width: 150px;
+    height: 50px;
     margin-left: auto;
-    margin-right: 0px;
 }

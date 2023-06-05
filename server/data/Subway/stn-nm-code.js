@@ -64,10 +64,6 @@ let body = {
 search_stn_id(body).then(result => {
     console.log(result);
 })
-<<<<<<< HEAD
 
 
-=======
-*/
->>>>>>> 3e2c5276f6838b8783220fb54458bccae1a1c71b
 module.exports.search_stn_id = search_stn_id;

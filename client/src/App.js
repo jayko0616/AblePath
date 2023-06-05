@@ -11,6 +11,7 @@ import RoutePage from './components/views/RoutePage/RoutePage'
 import InfoPage from './components/views/InfoPage/InfoPage'
 import SubwayPage from './components/views/InfoPage/SubwayPage'
 import BusPage from './components/views/InfoPage/BusPage'
+import TrainPage from './components/views/InfoPage/TrainPage'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route exact path="/info" element={<InfoPage/>}></Route>
       <Route exact path="/info/subway" element={<SubwayPage/>}></Route>
       <Route exact path="/info/bus" element={<BusPage/>}></Route>
+      <Route exact path="/info/train" element={<TrainPage/>}></Route>
     </Routes>
     </BrowserRouter>
   );

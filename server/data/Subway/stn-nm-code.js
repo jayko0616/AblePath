@@ -55,7 +55,7 @@ async function search_stn_id(dataToSubmit) {
     }
 }
 
-/*
+
 let body = {
     line: '경의선',
     stn_nm: '회기',
@@ -64,6 +64,6 @@ let body = {
 search_stn_id(body).then(result => {
     console.log(result);
 })
-*/
+
 
 module.exports.search_stn_id = search_stn_id;

@@ -14,7 +14,6 @@ function RoutePage() {
       <Header />
       <div class='route'>
         <Search id='search'></Search>
-        
         <div id = 'routeDisplay'>
           <Map id = 'map'></Map>
           <Path id ='path'></Path>

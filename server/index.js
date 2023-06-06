@@ -4,7 +4,7 @@ const port = 5000;
 const bodyParser = require('body-parser');
 
 const stn_nm_code = require('./data/Subway/stn-nm-code');
-const get_stId  = require ('./data/Bus/lowbus');
+const bus_station  = require ('./data/Bus/bus_station');
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -39,10 +39,17 @@ app.post('/info/subway/getStnCd', (req, res) => {
 })
 
 app.post ('/info/bus/get', function(req, res){
-    get_stId.get_stId(req.body)
+    bus_station.get_st_loc(req.body)
     .then(result => {
-        return res.status(200)
+        if(result.getSuccess === true){
+            return res.status(200)
              .json(result);
+        }
+        else{
+            return  res.json(result);
+
+        }
+
     })
 })
 

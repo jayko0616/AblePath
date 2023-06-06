@@ -281,7 +281,7 @@ function BusPageMap() {
         if(response.payload.getSuccess){
           for (let i = 0; i < response.payload.totalCnt; i++) {
             const station = response.payload.busStn[i];
-            var imageSrc = 'https://cdn-icons-png.flaticon.com/512/1515/1515539.png', // 마커이미지의 주소입니다    
+            var imageSrc = 'https://cdn-icons-png.flaticon.com/512/4287/4287661.png', // 마커이미지의 주소입니다    
                 imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
                 imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
                   

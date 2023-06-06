@@ -5,9 +5,14 @@ const bodyParser = require('body-parser');
 
 const get_route = require('./data/Route/route_search');
 const stn_nm_code = require('./data/Subway/stn-nm-code');
+<<<<<<< HEAD
+const bus_station  = require ('./data/Bus/bus_station');
+
+=======
 const stn_info = require('./data/Subway/stn_info');
 const get_stId  = require ('./data/Bus/lowbus');
 const realtime_arrival = require('./data/Subway/realtimeArrivalSubway');
+>>>>>>> 1cb953e807dca9fc9d31d712b54851e745329abe
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
@@ -86,10 +91,17 @@ app.post('/info/subway/getStnInfo', (req, res) => {
 })
 
 app.post ('/info/bus/get', function(req, res){
-    get_stId.get_stId(req.body)
+    bus_station.get_st_loc(req.body)
     .then(result => {
-        return res.status(200)
+        if(result.getSuccess === true){
+            return res.status(200)
              .json(result);
+        }
+        else{
+            return  res.json(result);
+
+        }
+
     })
 })
 

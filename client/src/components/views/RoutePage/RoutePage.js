@@ -37,7 +37,10 @@ function RoutePage() {
       <Header />
       <div class='route'>
         <Search id='search'></Search>
+<<<<<<< HEAD
+=======
         <button onClick={search_handler}>길찾기 검색</button>
+>>>>>>> 1cb953e807dca9fc9d31d712b54851e745329abe
         <div id = 'routeDisplay'>
           <Map className = 'map'></Map>
           <Path className ='path'></Path>

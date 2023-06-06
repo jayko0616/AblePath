@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../../logo.svg';
 import { Link } from 'react-router-dom';
 import './style.css'
 
@@ -18,8 +19,6 @@ const Header = () => {
     <div className="body">
       <nav className="navbar">
         <div className="navbar__logo">
-          <i className="fas fa-blog"></i>
-          <a href="">Able Path</a>
         </div>
         <ul className="navbar__menu">
           <li><MenuItem to={'/'}>홈</MenuItem></li>

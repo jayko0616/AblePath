@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 import '../MainPage/MainPage.css';
 import { useNavigate } from 'react-router';
 
@@ -21,13 +22,16 @@ function MainPage() {
 
   return (
     <div>
+      <Header/>
       <body>
+        <div className='btns'>
         <button id="info" onClick={toInfoPage}>
           교통 정보
         </button>
         <button id="route" onClick={toRouterPage}>
           길찾기
         </button>
+        </div>
       </body>
       <Footer/>
     </div>

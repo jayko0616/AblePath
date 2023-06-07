@@ -1,7 +1,7 @@
 const axios = require('axios');
 const key = require('../../config/train_key');
 const baseURL = 'http://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo?serviceKey=';
-const displayopt = '&numOfRows=30&pageNo=1&_type=json';
+const displayopt = '&numOfRows=700&pageNo=1&_type=json';
 //const infos = '&depPlaceId=NAT010000&arrPlaceId=NAT011668&trainGradeCode=00';
 
 /*function makeURL(departId, arrivalId) {

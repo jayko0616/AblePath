@@ -16,6 +16,28 @@ function makeURL(cityNo) {
   + cityNo;
 }
 
+function formatTime(timeNumber) {
+  const timeString = timeNumber.toString();
+  const year = timeString.substring(0, 4);
+  const month = timeString.substring(4, 6);
+  const day = timeString.substring(6, 8);
+  const hour = timeString.substring(8, 10);
+  const minute = timeString.substring(10, 12);
+  return `${year}년 ${month}월 ${day}일 ${hour}시${minute}분`;
+}
+
+function getCurrentTimeInNumberFormat() {
+  const now = new Date();
+  const year = now.getFullYear().toString().padStart(4, '0');
+  const month = (now.getMonth() + 1).toString().padStart(2, '0');
+  const day = now.getDate().toString().padStart(2, '0');
+  const hour = now.getHours().toString().padStart(2, '0');
+  const minute = now.getMinutes().toString().padStart(2, '0');
+  const second = now.getSeconds().toString().padStart(2, '0');
+  return year + month + day + hour + minute + second;
+}
+
+
 async function fetchTrainStations(cityNo) {
   const url = makeURL(cityNo);
   return axios.get(url)
@@ -183,16 +205,22 @@ function TrainPage() {
         </div>
       </form>
       <div>
-        {trainStationInfo.map((trainStation, index) => (
-          <div key={index}>
-            <p>Train No: {trainStation.trainno}</p>
-            <p>Departure Time: {trainStation.depplandtime}</p>
-            <p>Arrival Time: {trainStation.arrplandtime}</p>
-            <p>Train Name: {trainStation.traingradename}</p>
-            <p>Adult Charge: {trainStation.adultcharge}</p>
-            <hr />
-          </div>
-        ))}
+      {trainStationInfo.map((trainStation, index) => {
+            const currentTime = getCurrentTimeInNumberFormat();
+          if (trainStation.depplandtime > currentTime) 
+          //실시간보다 늦게 출발하는 기차만 보여줌
+          {
+          return (
+              <div key={index}>
+                  <p>기차번호: {trainStation.trainno}번 기차이름: {trainStation.traingradename}</p>
+                  <p>출발시간: {formatTime(trainStation.depplandtime)} 도착시간: {formatTime(trainStation.arrplandtime)}</p>
+                  <p>운임료: {trainStation.adultcharge}원</p>
+                  <p>{currentTime}</p>
+                  <hr />
+              </div>
+          );}
+          return null; // Skip rendering if the condition is not met
+          })}
       </div>
       <Footer />
     </div>

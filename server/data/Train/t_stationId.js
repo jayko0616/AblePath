@@ -3,7 +3,7 @@ var convert = require('xml-js');
 const key = require('../../config/train_key')
 const baseURL = 'http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList?serviceKey=';
 const option = '&numOfRows=10&pageNo=1&_type=xml'   //출력 Page 개수 + row 개수
-const cityNo = 38;  //도시 코드 : 받아와야할 듯
+const cityNo = 11;  //도시 코드 : 받아와야할 듯
 var url;
 
 function makeURL(){

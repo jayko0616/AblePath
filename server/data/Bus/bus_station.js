@@ -14,10 +14,8 @@ async function get_st_loc(dataToSubmit) {
     var busjson = {};
     try{
         const res = await axios.get(url);
-        // console.log('Status', res.status);
         var json = res.data;
         var item = json.response.body.items.item;
-        // console.log(item);
 
         busjson.busStn = item;
         busjson.totalCnt = item.length;
@@ -33,4 +31,6 @@ async function get_st_loc(dataToSubmit) {
     }
     
 }
+
+
 module.exports.get_st_loc = get_st_loc;

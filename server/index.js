@@ -3,10 +3,15 @@ const app = express();
 const port = 5000;
 const bodyParser = require('body-parser');
 
+const get_route = require('./data/Route/route_search');
 const stn_nm_code = require('./data/Subway/stn-nm-code');
+const bus_station  = require ('./data/Bus/bus_station');
+
 const stn_info = require('./data/Subway/stn_info');
 const get_stId  = require ('./data/Bus/lowbus');
 const trainTable = require('./data/Train/trainTable');
+const realtime_arrival = require('./data/Subway/realtimeArrivalSubway');
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
@@ -55,6 +60,20 @@ app.post('/info/subway/realtimeArrival', (req, res) => {
         })
 })
 
+app.post('/route/path', (req, res) => {
+    get_route.route_search(req.body) 
+        .then(result => {
+            if(result.getSuccess === true) {
+                console.log("route_search Success!");
+                return res.status(200)
+                        .json(result)
+            }
+            else {
+                return res.json(result);
+            }
+        })
+})
+
 app.post('/info/subway/getStnInfo', (req, res) => {
     stn_info.stn_info(req.body)
         .then(result => {
@@ -72,10 +91,17 @@ app.post('/info/subway/getStnInfo', (req, res) => {
 })
 
 app.post ('/info/bus/get', function(req, res){
-    get_stId.get_stId(req.body)
+    bus_station.get_st_loc(req.body)
     .then(result => {
-        return res.status(200)
+        if(result.getSuccess === true){
+            return res.status(200)
              .json(result);
+        }
+        else{
+            return  res.json(result);
+
+        }
+
     })
 })
 

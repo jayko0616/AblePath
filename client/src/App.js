@@ -16,6 +16,11 @@ import TrainPage from './components/views/InfoPage/TrainPage'
 
 function App() {
   return (
+    <div >
+      <div className='App-header'>
+        <img src={logo} className="App-logo" alt="logo"/>
+          <a>Able Path</a>
+      </div>
     <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<MainPage/>}></Route>
@@ -26,6 +31,7 @@ function App() {
       <Route exact path="/info/train" element={<TrainPage/>}></Route>
     </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 

@@ -20,9 +20,10 @@ function getCurrentDate() {
 }
 
 async function live_train(dataToSubmit) {
+  
   function makeURL(departId, arrivalId) {
   const currentDate = getCurrentDate();
-  return `${baseURL}${key.train_key}${displayopt}&depPlaceId=${departId}&arrPlaceId=${arrivalId}&trainGradeCode=00&depPlandTime=${currentDate}`;
+  return `${baseURL}${key.train_key}${displayopt}&depPlaceId=${departId}&arrPlaceId=${arrivalId}&depPlandTime=${currentDate}`;
   }
   const url = makeURL(dataToSubmit.departId, dataToSubmit.arrivalId);
 

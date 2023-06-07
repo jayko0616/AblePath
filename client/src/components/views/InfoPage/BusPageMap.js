@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './BusPageMap.css';
 import { useDispatch } from 'react-redux';
 import { get_bus } from '../../../_actions/data_action';
+import { get_arrive } from '../../../_actions/data_action';
 
 function BusPageMap() {
-
   const { kakao } = window;
   const dispatch = useDispatch();
-
+  const dispatch2 = useDispatch();
   function initializeMap(props) {
     // 마커를 담을 배열입니다
     var markers = [];
@@ -30,6 +30,7 @@ function BusPageMap() {
 
     // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow();
+    var businfowindow = new kakao.maps.InfoWindow();
 
     // 키워드로 장소를 검색합니다
     const searchForm = document.getElementById("submit_btn");
@@ -246,7 +247,6 @@ function BusPageMap() {
     // 인포윈도우에 장소명을 표시합니다
     function displayInfowindow(marker, title) {
         var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-        
         infowindow.setContent(content);
         infowindow.open(map, marker);
 
@@ -274,16 +274,17 @@ function BusPageMap() {
         latitude: center.getLat(),
         longitude: center.getLng(),
       }
-      console.log(body);
 
+
+      // 지도 이동시 주변 버스 정류장 위치를 마커로 띄우는 코드
       dispatch(get_bus(body))
       .then(response => {
         if(response.payload.getSuccess){
           for (let i = 0; i < response.payload.totalCnt; i++) {
             const station = response.payload.busStn[i];
             var imageSrc = 'https://cdn-icons-png.flaticon.com/512/4287/4287661.png', // 마커이미지의 주소입니다    
-                imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-                imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+                imageSize = new kakao.maps.Size(60, 65), // 마커이미지의 크기입니다
+                imageOption = {offset: new kakao.maps.Point(30, 65)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
                   
             // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
             var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
@@ -291,18 +292,52 @@ function BusPageMap() {
             markerPosition  = new kakao.maps.LatLng(station.gpslati, station.gpslong); 
 
             // 마커를 생성합니다
-            var marker = new kakao.maps.Marker({
+            var busmarker = new kakao.maps.Marker({
                 position: markerPosition,
                 image: markerImage
             });
 
-            // 마커가 지도 위에 표시되도록 설정합니다
-            marker.setMap(map);
+            busmarker.setClickable(true);
+            map.setZoomable(false);
+
+
+            window.kakao.maps.event.addListener(busmarker, "click", function(mouseEvent){
+              console.log(station.nodenm)
+              map.setLevel(2);
+              businfowindow.setContent('<div style="padding:5px;z-index:1;">' + station.nodenm + '</div>');
+              businfowindow.open(map, busmarker);
+            })           
+
+              let body2 = {
+                cityCode: station.citycode,
+                nodeId: station.nodeid,
+              }
+              dispatch2(get_arrive(body2))
+              .then(response => {
+                if(response.payload.getSuccess == true){
+                  busmarker.setMap(map);
+                  kakao.maps.event.addListener(busmarker, 'click', function(){
+                    for (let i = 0; i < response.payload.totalCnt; i++) {
+                      const bus = response.payload.busArr[i];
+                      console.log('버스 번호: ' + bus.routeno);
+                      if(bus.vehicletp == '저상버스'){
+                          console.log('도착까지 남은 시간: ' + bus.arrtime + '초');
+                      }
+                      else console.log('해당 버스의 저상버스 도착예정은 없습니다.')
+                  }
+                  });
+      
+
+                }
+
+
+              });
+            
+  
 
           }
         }
       })
-
       
   });
 

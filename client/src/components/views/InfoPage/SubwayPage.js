@@ -4,7 +4,7 @@ import { ReactComponent as SubwayMap } from '../../images/subway_map.svg';
 import './SubwayPage.css';
 import LineComponent from './SubwayLine';
 import { useDispatch } from 'react-redux';
-import { get_realtime_arrival } from '../../../_actions/subway_action';
+import { get_realtime_arrival, get_stn_info } from '../../../_actions/subway_action';
 import RealtimeBox from './Subway_realtime';
 
 function SubwayPage() {
@@ -15,6 +15,7 @@ function SubwayPage() {
   const [selectedLineTxt, setSelectedLineTxt] = useState(""); //지하철 라인 텍스트  ex. '1호선'
   const [selected, setSelected] = useState(false); //ALL : false , Others : true
   const [realtime, setRealtime] = useState(null);
+  const [stnInfo, setStnInfo] = useState();
   const dispatch = useDispatch();
   
   //selectedComponent가 변경될 때마다 다시 렌더링
@@ -50,16 +51,21 @@ function SubwayPage() {
   }
 
   const clickHandler = (event) => {
-    console.log("EVENT>>>>>", event.target); // 이거도 나중에 지우기
     if(selected){
       if(event.target.tagName === 'DIV'){
         setSelectedStn(event.target.textContent);
         console.log(event.target.textContent)
         //line은 selectedCoponent에 따라서 하면 될 듯 
+
+        var line_nm;
+        if(selectedLineTxt==="경의중앙선") line_nm = "중앙선"
+        else line_nm = selectedLineTxt;
+
         let body = {
           stn_nm: event.target.textContent,
           line: selectedLineTxt,
           stn_line: selectedLine,
+          line_nm: line_nm,
         }
 
         dispatch(get_realtime_arrival(body))
@@ -69,6 +75,17 @@ function SubwayPage() {
             //이제 이걸 화면에 이쁘게 띄우면 됨 ~!~!~!~!~! 
             setRealtime(response.payload);
             console.log(realtime);
+          }
+        })
+
+        dispatch(get_stn_info(body))
+        .then(response => {
+          if(response.payload.getSuccess) {
+            setStnInfo({
+              stn_telno: response.payload.stn_telno,
+              elevater_txt: response.payload.elevater_txt,
+            })
+            console.log(stnInfo);
           }
         })
       }
@@ -105,7 +122,7 @@ function SubwayPage() {
         
         <LineComponent selectedComponent = {selectedComponent} onClick={clickHandler}/>
         {(realtime !== null) && <RealtimeBox  className="realtime" selectedStn = {selectedStn} 
-          realtime={realtime} selectedLineTxt = {selectedLineTxt} />}
+          realtime={realtime} selectedLineTxt = {selectedLineTxt} stnInfo={stnInfo}/>}
 
         {/**선택된 라인 외에는 흐리게 나타내기 위한 요소 */}
         <div className={selected? "visible":"hidden"}>

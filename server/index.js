@@ -102,12 +102,8 @@ app.post ('/info/bus/get', function(req, res){
     })
 })
 
-// 
-
-// const express = require('express')
-// const bodyParser = require('body-parser');
-// const port = 5000;
-// const app = express();
-
-// 
-// >>>>>>> Stashed changes
+app.get('/route/map', (req, res) => {
+    const map_key = require('./config/map_key.js')
+    console.log("send map key.");
+    return res.send(map_key.tmap_key);
+});

@@ -20,8 +20,8 @@ async function route_search(dataToSubmit) {
         var minIdx = 0;
 
         for(i = 0; i < dataToSubmit.count; i++){
-            var transCnt = parseInt(res.data.metaData.plan.itineraries[i].transferCount);
-            var time = parseInt(res.data.metaData.plan.itineraries[i].totalTime);
+            var transCnt = res.data.metaData.plan.itineraries[i].transferCount;
+            var time = res.data.metaData.plan.itineraries[i].totalTime;
             
             if( transCnt < minTransfer){
                 minTransfer = transCnt;

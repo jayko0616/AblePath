@@ -1,63 +1,29 @@
-const axios = require('axios');
-const config = require('../../config/subway_key');
 const data = require('./stn_info.json');
 
-/**
- * 
- * @param {*} startIdx 
- * @param {*} endIdx 
- * @returns 역사별 승강기 시설 정보 URL
- */
-function makeURL(startIdx, endIdx) {
-    var url = 'http://openapi.seoul.go.kr:8088/';
-    url += config.ordinary_key;
-    url += '/json/SeoulMetroFacilInfo/';
-    url += startIdx + '/' + endIdx + '/';
-    return url;
-}
-
-async function facil_info(dataToSubmit) {
-    const startIdx = 0;
-    const endIdx = 5;
-    const url = makeURL(startIdx, endIdx);
-
-    try{
-        const res = await axios.get(url);
-        console.log(res.status);
-        console.log(res)
-        
-    }
-    catch(error) {
-        console.log(error);
-    }
-}
-
-
-function getObject(data, key, value) {
+function getObject(data, key, value, key2, value2) {
     return data.DATA.filter(function (object) {
-        return object[key] === value;
+        return object[key] === value && object[key2] === value2;
     })
 }
 
+/**
+ * 경의중앙선의 line_nm은 '중앙선'임.
+ * @param {*} dataToSubmit - stn_nm, line_nm 
+ * @returns 
+ */
 async function stn_info(dataToSubmit) {
     const key = 'station';
+    const key2 = 'line_name'
     const value = dataToSubmit.stn_nm;
-
-    const startIdx = 0;
-    const endIdx = 10;
-    const url = makeURL(startIdx, endIdx);
+    const value2 = dataToSubmit.line_nm
 
     try{
-        const res = await axios.get(url);
-        
-        console.log(res.status);
-        console.log(res.data)
-
-        const info = getObject(data, key, value);
-        
+        const info = getObject(data, key, value, key2, value2);
+        console.log(info);
         return {
             getSuccess: true,
-            stn_telno: info[0].telno_info
+            stn_telno: info[0].telno_info,
+            elevater_txt: info[0].elevater_txt,
         }
     }
     catch(error) {
@@ -70,12 +36,13 @@ async function stn_info(dataToSubmit) {
 }
 
 /*
-
 let body = {
-    stn_nm: '정발산'
+    stn_nm: '청량리',
+    line_nm: '1호선'
 }
 
-stn_info(body);
+console.log(stn_info(body));
 */
+
 
 module.exports.stn_info = stn_info;

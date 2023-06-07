@@ -88,14 +88,14 @@ function TrainPage() {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    let dataset = {
+    let body = {
       departId: DepartureSubRegion,
       arrivalId: ArrivalSubRegion,
     };
 
-    console.log(dataset);
+    console.log(body);
 
-    dispatch(train_arrival(dataset))
+    dispatch(train_arrival(body))
       .then((response) => {
         if (response.payload.getSuccess) {
           console.log(response.payload.trainno);

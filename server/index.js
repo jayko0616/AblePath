@@ -6,12 +6,7 @@ const bodyParser = require('body-parser');
 const stn_nm_code = require('./data/Subway/stn-nm-code');
 const stn_info = require('./data/Subway/stn_info');
 const get_stId  = require ('./data/Bus/lowbus');
-<<<<<<< HEAD
 const trainTable = require('./data/Train/trainTable');
-
-=======
-const realtime_arrival = require('./data/Subway/realtimeArrivalSubway');
->>>>>>> 3e2c5276f6838b8783220fb54458bccae1a1c71b
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
@@ -84,29 +79,15 @@ app.post ('/info/bus/get', function(req, res){
     })
 })
 
+app.post ('/info/train/getTraintable', function(req, res){
+    console.log("index reached")
+    trainTable.live_train(req.body)
+    .then(result => {
+        return res.status(200)
+             .json(result);
+    })
+})
 
-app.post('/info/train/traindata', function(req, res) {
-    const dataToSubmit = req.body;
-  
-    trainTable.live_train(dataToSubmit)
-      .then(result => {
-        console.log("실행 리턴값:\n", result);
-  
-        if (result.getSuccess === true) {
-          console.log(`live_train(${dataToSubmit}) getSuccess!`);
-          return res.status(200).json({
-            getSuccess: true,
-            trainList: result.trainList,
-          });
-        } else {
-          console.log("err!");
-          return res.json({
-            getSuccess: false,
-            error: result.error,
-          });
-        }
-      });
-  });
 
 
 

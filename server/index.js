@@ -105,6 +105,13 @@ app.post ('/info/bus/get', function(req, res){
     })
 })
 
+
+app.get('/route/map', (req, res) => {
+    const map_key = require('./config/map_key.js')
+    console.log("send map key.");
+    return res.send(map_key.tmap_key);
+});
+
 app.post ('/info/train/getTraintable', function(req, res){
     console.log("index reached")
     trainTable.live_train(req.body)
@@ -143,3 +150,4 @@ app.listen(3000, function() {
 });
 
 */
+

@@ -1,12 +1,19 @@
 .map{
     margin-left: 0 auto;
-    width: 80%;
+    
+    position: absolute;
+    
 }
 .path {
     margin-left: 0 auto;
-    width: 40%x;
+    
+    position: absolute;
 }
 
 #routeDisplay{
     width: 100%;
+    
+    position: relative;
 }
+
+

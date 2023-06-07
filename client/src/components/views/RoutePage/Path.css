@@ -1,0 +1,90 @@
+.routelist {
+    width: 100%;
+    border: 2px;
+    padding: 10px;
+}
+.mode{
+    font-weight: bolder;
+    font-size: large;
+}
+.bus_route{
+    display: flex;
+}
+.subway_route{
+    display: flex;
+}
+.walk_route{
+    display: flex;
+}
+.transfer_route{
+    display: flex;
+}
+
+.route_text{
+    display: block;
+    margin-left: 50px;
+    background-color: blue;
+    align-items: center;
+}
+
+
+.start{
+    font-size: large;
+    font-weight: 800;
+    margin-left: 20px;
+       
+}
+.end{
+    font-size: large;
+    font-weight: 800;
+    margin-left: 20px;
+}
+
+.section_time{
+    margin-left: 20px;
+}
+.icon{
+    width: 300px;
+    height:300px;
+    justify-content: flex-start;
+}
+
+#bus_num{
+    margin-left: 20px;
+}
+#sybway_line{
+    font-size: x-large;  
+    margin-left: 20px;
+}
+
+#bus_icon{
+    background-image: url('../../images/bus.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+}
+
+#subway_icon{
+    background-image: url('../../images/train.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+}
+
+#trans_icon {
+    background-image: url('../../images/transfer.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+}
+
+#walk_icon{
+    background-image: url('../../images/walk.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+}

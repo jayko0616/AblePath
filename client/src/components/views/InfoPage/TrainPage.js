@@ -9,7 +9,11 @@ const baseURL = 'http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrai
 const option = '&numOfRows=20&pageNo=1&_type=json';
 
 function makeURL(cityNo) {
-  return baseURL + '%2BZv9hPmS6mOwrU8rWvnNbtY3fQm2aGk6SK4q3NcBQ9hmatKRNc50lC%2Fm5gAb0wOv5V71nzLUz1CASUqsYmYK8g%3D%3D' + option + '&cityCode=' + cityNo;
+  return baseURL + 
+  '%2BZv9hPmS6mOwrU8rWvnNbtY3fQm2aGk6SK4q3NcBQ9hmatKRNc50lC%2Fm5gAb0wOv5V71nzLUz1CASUqsYmYK8g%3D%3D' 
+  + option 
+  + '&cityCode=' 
+  + cityNo;
 }
 
 async function fetchTrainStations(cityNo) {
@@ -34,6 +38,7 @@ function TrainPage() {
   const [ArrivalSubRegion, setArrivalSubRegion] = useState("");
   const [DepartureTrainStations, setDepartureTrainStations] = useState([]);
   const [ArrivalTrainStations, setArrivalTrainStations] = useState([]);
+  const [trainStationInfo, setTrainStationInfo] = useState([]);
 
   useEffect(() => {
     if (DepartureRegion !== "") {
@@ -98,12 +103,15 @@ function TrainPage() {
     dispatch(train_arrival(body))
       .then((response) => {
         if (response.payload.getSuccess) {
-          for(let i=0; i<response.payload.totalCnt; i++){
-            const trainStation = response.payload. trainList[i];
-            console.log(trainStation.trainno, trainStation.depplandtime, trainStation.arrplandtime, 
-              trainStation.traingradename, trainStation.adultcharge);
+          const trainStationInfo = response.payload.trainList.map((trainStation) => ({
+            trainno: trainStation.trainno,
+            depplandtime: trainStation.depplandtime,
+            arrplandtime: trainStation.arrplandtime,
+            traingradename: trainStation.traingradename,
+            adultcharge: trainStation.adultcharge
+          }));
+          setTrainStationInfo(trainStationInfo);
         }
-      }
       });
   };
 
@@ -174,6 +182,18 @@ function TrainPage() {
           <button type="submit">검색!</button>
         </div>
       </form>
+      <div>
+        {trainStationInfo.map((trainStation, index) => (
+          <div key={index}>
+            <p>Train No: {trainStation.trainno}</p>
+            <p>Departure Time: {trainStation.depplandtime}</p>
+            <p>Arrival Time: {trainStation.arrplandtime}</p>
+            <p>Train Name: {trainStation.traingradename}</p>
+            <p>Adult Charge: {trainStation.adultcharge}</p>
+            <hr />
+          </div>
+        ))}
+      </div>
       <Footer />
     </div>
   );

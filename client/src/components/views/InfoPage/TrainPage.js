@@ -215,7 +215,63 @@ function TrainPage() {
                   <p>기차번호: {trainStation.trainno}번 기차이름: {trainStation.traingradename}</p>
                   <p>출발시간: {formatTime(trainStation.depplandtime)} 도착시간: {formatTime(trainStation.arrplandtime)}</p>
                   <p>운임료: {trainStation.adultcharge}원</p>
-                  <p>{currentTime}</p>
+                  {trainStation.traingradename === 'KTX' && (
+                    <>
+                    <p>전동휠체어 이용석: 2호차 1A, 1C</p>
+                    <p>휠체어 지정석: 2호차 1A, 2B, 2C</p>
+                    </>
+                  )}
+
+                  {trainStation.traingradename === 'KTX-이음' && (
+                    <>
+                    <p>전동휠체어 이용석: 3호차 1D, 2A</p>
+                    <p>휠체어 지정석: 3호차 2D, 3A(2인석), 3B(2인석)</p>
+                    </>
+                  )}
+
+                  {trainStation.traingradename === 'ITX-청춘' && (
+                    <>
+                    <p>전동휠체어 이용석: 3호차 1A</p>
+                    <p>휠체어 지정석:3호차 1D, 2A, 2D, 3A</p>
+                    </>
+                  )}
+
+                  {trainStation.traingradename === 'ITX-새마을' && (
+                    <>
+                    <p>전동휠체어 이용석: 3호차 1A, 2D</p>
+                    <p>휠체어 지정석: 3호차 2A, 3D</p>
+                    </>
+                  )}
+
+                  {trainStation.traingradename === '누리로' && (
+                    <>
+                    <p>전동휠체어 이용석: 2호차 1D, 2D</p>
+                    <p>휠체어 지정석: 2호차 1A, 2A, 3A, 3B, 3D</p>
+                    </>
+                  )}
+
+                  {trainStation.traingradename === 'KTX-산천(A-type)' && (
+                    <>
+                    <p>전동휠체어 이용석: 1호차 12A, 12D</p>
+                    <p>휠체어 지정석: 1호차 11A, 11C(2인석), 11D(2인석)</p>
+                    </>
+                  )}
+
+                  {trainStation.traingradename === 'KTX-산천(B-type)' && (
+                    <>
+                    <p>전동휠체어 이용석: 1호차 12A, 12D</p>
+                    <p>휠체어 지정석: 1호차 11A, 11C(2인석), 11D(2인석)</p>
+                    </>
+                    )}
+
+                  {trainStation.traingradename === 'SRT' && (
+                    <>
+                    <p>전동휠체어 이용석: 1호차 12A, 12D</p>
+                    <p>휠체어 지정석: 1호차 11A, 11C(2인석), 11D(2인석)</p>
+                    </>
+                    )}
+
+
                   <hr />
               </div>
           );}

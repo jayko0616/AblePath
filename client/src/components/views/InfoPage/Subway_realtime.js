@@ -12,6 +12,9 @@ function RealtimeBox(props) {
     var dn_2nd_dest = "";
     var dn_2nd_arvlMsg2 = "";
 
+    var telno = "";
+    var elev = "";
+
     //props.realtime 에 들어있는 정보들 가지고
 
     if(props.realtime.cnt0 === 1) {
@@ -36,6 +39,8 @@ function RealtimeBox(props) {
         dn_2nd_arvlMsg2 = props.realtime.dn_2nd_arvlMsg2;
     }
 
+    if(props.stnInfo.telno_info) telno = props.stnInfo.telno_info;
+    if(props.stnInfo.elevater_txt) elev = props.stnInfo.elevater_txt;
 
     return(
         <div className="realtime_container" >
@@ -56,6 +61,8 @@ function RealtimeBox(props) {
                         <span>{dn_2nd_dest} {dn_2nd_arvlMsg2}</span>
                     </div>
                 </div>
+                {telno}
+                {elev}
             </div>
         </div>
     )

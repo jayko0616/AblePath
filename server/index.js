@@ -9,11 +9,14 @@ const bus_station  = require ('./data/Bus/bus_station');
 const bus_arrive = require('./data/Bus/bus_arrive');
 
 const stn_info = require('./data/Subway/stn_info');
+const get_stId  = require ('./data/Bus/lowbus');
+const trainTable = require('./data/Train/trainTable');
 const realtime_arrival = require('./data/Subway/realtimeArrivalSubway');
 
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
+app.use(bodyParser.json());
 
 app.listen(port, () => console.log(`AblePath app listening on port ${port}`))
 
@@ -103,28 +106,66 @@ app.post ('/info/bus/get', function(req, res){
     })
 })
 
+<<<<<<< HEAD
 app.post ('/info/bus/arrive', function(req, res){
     bus_arrive.get_arr_info(req.body)
     .then(result => {
         if(result.getSuccess === true){
             console.log(result.busArr)
+=======
+
+app.get('/route/map', (req, res) => {
+    const map_key = require('./config/map_key.js')
+    console.log("send map key.");
+    return res.send(map_key.tmap_key);
+});
+
+app.post ('/info/train/getTraintable', function(req, res){
+    console.log("index reached")
+    trainTable.live_train(req.body)
+    .then(result => {
+        if(result.getSuccess === true){
+>>>>>>> e9c04aa9441c29787819f1891034aa1d05e4a1f3
             return res.status(200)
              .json(result);
         }
         else{
             return  res.json(result);
+<<<<<<< HEAD
 
         }
 
     })
 })
 
+=======
+        }
+    })
+})
+
+
+
+
+>>>>>>> e9c04aa9441c29787819f1891034aa1d05e4a1f3
 // 
 
 // const express = require('express')
 // const bodyParser = require('body-parser');
 // const port = 5000;
-// const app = express();
+//const app = express();
 
 // 
 // >>>>>>> Stashed changes
+
+
+/*
+
+
+// 다른 라우터와 앱 설정...
+
+app.listen(3000, function() {
+  console.log('Server listening on port 3000');
+});
+
+*/
+

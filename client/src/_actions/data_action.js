@@ -23,11 +23,8 @@ export function get_bus(dataToSubmit){
 }*/
 
 export function train_arrival(dataToSubmit){
-  console.log("action reached")
-  console.log(dataToSubmit.departId)
-  console.log(dataToSubmit.arrivalId)
     const request = axios.post('/info/train/getTraintable', dataToSubmit)
-    .then(response => console.log(response))
+    .then(response => response.data)
     return{
         type: "getTraintable",
         payload: request

@@ -98,12 +98,11 @@ function TrainPage() {
     dispatch(train_arrival(body))
       .then((response) => {
         if (response.payload.getSuccess) {
-          console.log(response.payload.trainno);
-          console.log(response.payload.charge);
-          console.log(response.payload.depart);
-          console.log(response.payload.arrival);
-          console.log(response.payload.traintype);
+          for(let i=0; i<response.payload.totalCnt; i++){
+            const trainStation = response.payload. trainList[i];
+            console.log(trainStation.trainno, trainStation.arrplandtime);
         }
+      }
       });
   };
 

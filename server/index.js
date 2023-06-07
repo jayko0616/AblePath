@@ -109,8 +109,13 @@ app.post ('/info/train/getTraintable', function(req, res){
     console.log("index reached")
     trainTable.live_train(req.body)
     .then(result => {
-        return res.status(200)
+        if(result.getSuccess === true){
+            return res.status(200)
              .json(result);
+        }
+        else{
+            return  res.json(result);
+        }
     })
 })
 

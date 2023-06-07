@@ -1,6 +1,6 @@
 const axios = require('axios');
 var convert = require('xml-js');
-const key = require('../../config/api_key')
+const key = require('../../config/bus_key')
 
 
 async function get_stId(dataToSubmit){

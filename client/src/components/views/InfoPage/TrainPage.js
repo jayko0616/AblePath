@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import axios from 'axios';
 import { train_arrival } from '../../../_actions/data_action';
 import { useDispatch } from 'react-redux';
+import './TrainPage.css';
 
 const baseURL = 'http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList?serviceKey=';
 const option = '&numOfRows=20&pageNo=1&_type=json';
@@ -201,7 +202,7 @@ function TrainPage() {
           )}
         </div>
         <div className="search">
-          <button type="submit">검색!</button>
+          <button class="train-button" type="submit">검색!</button>
         </div>
       </form>
       <div>

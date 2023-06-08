@@ -16,7 +16,7 @@ async function get_arr_info(dataToSubmit){
         busjson2.busArr = item;
         busjson2.totalCnt = item.length;
         busjson2.getSuccess= true;
-
+        
         return busjson2
 
     }

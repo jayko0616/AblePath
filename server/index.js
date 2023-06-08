@@ -9,7 +9,6 @@ const bus_station  = require ('./data/Bus/bus_station');
 const bus_arrive = require('./data/Bus/bus_arrive');
 
 const stn_info = require('./data/Subway/stn_info');
-const get_stId  = require ('./data/Bus/lowbus');
 const trainTable = require('./data/Train/trainTable');
 const realtime_arrival = require('./data/Subway/realtimeArrivalSubway');
 

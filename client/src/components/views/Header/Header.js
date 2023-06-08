@@ -26,7 +26,6 @@ const Header = () => {
           <li><MenuItem to= {'/info'}>교통정보</MenuItem></li>
         </ul>
         
-        <a href="#" className="navbar__toggleBtn">메뉴</a>
       </nav>
     </div>
     <script src="main.js"></script> 

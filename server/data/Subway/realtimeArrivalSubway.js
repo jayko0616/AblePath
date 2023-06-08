@@ -17,6 +17,12 @@ function makeURL(station, startIdx, endIdx) {
     return url;
 }
 
+/**
+ * 
+ * @param {*} dataToSubmit 
+ * {stn_nm: "백석", stn_line: "1003"}
+ * @return
+ */
 async function realtime_arrival(dataToSubmit) {
     const startIdx = 0;
     const endIdx = 20;

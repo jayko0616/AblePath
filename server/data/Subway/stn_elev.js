@@ -43,5 +43,3 @@ let body = {
 }
 
 stn_elev(body);
-
-https://openapi.kric.go.kr/openapi/convenientInfo/stationElevator?serviceKey=$2a$10$HJTTSJsRxlU3hIlmx/sAtuW78WuY1bJWk8pWH8msP6xBzhnbUZ8g2&format=json&railOprIsttCd=S1&lnCd=3&stinCd=322

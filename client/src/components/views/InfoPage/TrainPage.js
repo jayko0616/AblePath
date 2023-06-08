@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import axios from 'axios';
 import { train_arrival } from '../../../_actions/data_action';
 import { useDispatch } from 'react-redux';
+import './TrainPage.css';
 
 const baseURL = 'http://apis.data.go.kr/1613000/TrainInfoService/getCtyAcctoTrainSttnList?serviceKey=';
 const option = '&numOfRows=20&pageNo=1&_type=json';
@@ -100,7 +101,7 @@ function TrainPage() {
     if (region !== "") {
       return (
         <select value={subRegionState} onChange={subRegionHandler} required>
-          <option value="">=== 선택 ===</option>
+          <option value="">기차역 선택(Station)</option>
           {trainStations.map((station) => (
             <option key={station.name} value={station.name}>
               {station.code}
@@ -140,13 +141,15 @@ function TrainPage() {
   return (
     <div>
       <Header />
-      <form onSubmit={onSubmitHandler}>
-        Train page 입니다.
+      <form onSubmit={onSubmitHandler} >
         <div>
-          <label>출발지</label>
+          <div class="icon-label">
+            <span class="icon icon-start"></span>
+            <label class="labels">출발지</label>
+          </div>
           <div className="city">
             <select value={DepartureRegion} onChange={onDepartureRegionHandler} required>
-                <option type="submit" value="none">=== 선택 ===</option>
+                <option type="submit" value="none">출발지 선택[City]</option>
                 <option type="submit" value="11">서울특별시</option>
                 <option type="submit" value="12">세종특별시</option>
                 <option type="submit" value="21">부산광역시</option>
@@ -166,16 +169,19 @@ function TrainPage() {
             </select>
           </div>
           {DepartureRegion !== "" && (
-            <div className="sub-region">
+            <div className="sub-region" >
               {renderSubRegionOptions(DepartureRegion, DepartureSubRegion, onDepartureSubRegionHandler, DepartureTrainStations)}
             </div>
           )}
         </div>
         <div>
-          <label>도착지</label>
+          <div class="icon-label">
+            <span class="icon icon-start"></span>
+            <label class="labels">도착지</label>
+          </div>
           <div className="city">
             <select value={ArrivalRegion} onChange={onArrivalRegionHandler} required>
-                <option type="submit" value="none">=== 선택 ===</option>
+                <option type="submit" value="none">도착지 선택[City]</option>
                 <option type="submit" value="11">서울특별시</option>
                 <option type="submit" value="12">세종특별시</option>
                 <option type="submit" value="21">부산광역시</option>
@@ -201,7 +207,9 @@ function TrainPage() {
           )}
         </div>
         <div className="search">
-          <button type="submit">검색!</button>
+          <button class="train-button" type="submit">
+            <span className="search-icon"></span>
+          </button>
         </div>
       </form>
       <div>
@@ -212,9 +220,9 @@ function TrainPage() {
           {
           return (
               <div key={index}>
-                  <p>기차번호: {trainStation.trainno}번 기차이름: {trainStation.traingradename}</p>
-                  <p>출발시간: {formatTime(trainStation.depplandtime)} 도착시간: {formatTime(trainStation.arrplandtime)}</p>
-                  <p>운임료: {trainStation.adultcharge}원</p>
+                  <p>기차: {trainStation.traingradename}     운임료: {trainStation.adultcharge}원</p>
+                  <p>출발시간: {formatTime(trainStation.depplandtime)}</p>
+                  <p>도착시간: {formatTime(trainStation.arrplandtime)}</p>
                   {trainStation.traingradename === 'KTX' && (
                     <>
                     <p>전동휠체어 이용석: 2호차 1A, 1C</p>

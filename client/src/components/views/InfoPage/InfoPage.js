@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
-
+import './InfoPage.css';
 
 function InfoPage() {
 
@@ -25,13 +25,13 @@ function InfoPage() {
   return (
     <div>
       <Header />
-        <button id="subway" onClick={toSubwayPage}>
+        <button class="infobutton" id="subway" onClick={toSubwayPage}>
           지하철
         </button>
-        <button id="bus" onClick={toBusPage}>
+        <button class ="infobutton" id="bus" onClick={toBusPage}>
           버스
         </button>
-        <button id="train" onClick={toTrainPage}>
+        <button class = "infobutton" id="train" onClick={toTrainPage}>
           기차
         </button>
       <Footer />

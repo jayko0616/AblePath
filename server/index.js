@@ -109,8 +109,13 @@ app.post ('/info/bus/arrive', function(req, res){
     bus_arrive.get_arr_info(req.body)
     .then(result => {
         if(result.getSuccess === true){
-            console.log(result.busArr)
+            return res.status(200)
+            .json(result);
         }
+        else{
+            return res.json(result);
+        }
+
     });
 });
 

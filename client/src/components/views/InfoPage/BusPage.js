@@ -12,7 +12,6 @@ function BusPage() {
       <Header />
       <div className='buspage'>
       <BusPageMap id = 'map'></BusPageMap>
-        Bus page 입니다.
       </div>
       <Footer />
     </div>

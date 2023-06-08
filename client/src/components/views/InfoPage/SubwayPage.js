@@ -59,6 +59,7 @@ function SubwayPage() {
 
         var line_nm;
         if(selectedLineTxt==="경의중앙선") line_nm = "중앙선"
+        else if(selectedLineTxt==="수인분당선") line_nm = "분당선"
         else line_nm = selectedLineTxt;
 
         let body = {
@@ -88,6 +89,12 @@ function SubwayPage() {
               elevater_txt: response.payload.elevater_txt,
             })
             console.log(stnInfo);
+          }
+          else {
+            setStnInfo({
+              isTelno: response.payload.isTelno,
+              isElev: response.payload.isElev
+            })
           }
         })
       }

@@ -25,10 +25,7 @@ const Header = () => {
           <li><MenuItem to={'/route'}>길찾기</MenuItem></li>
           <li><MenuItem to= {'/info'}>교통정보</MenuItem></li>
         </ul>
-<<<<<<< HEAD
-=======
-        
->>>>>>> f682f4246303b145e06e56d0ff5dc95bb3783c0f
+
       </nav>
     </div>
     <script src="main.js"></script> 

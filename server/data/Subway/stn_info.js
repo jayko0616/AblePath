@@ -20,8 +20,13 @@ async function stn_info(dataToSubmit) {
     try{
         const info = getObject(data, key, value, key2, value2);
         console.log(info);
+        const isTelno = (info.telno_info !== null);
+        const isElev = (info.elevater_txt !== null);
+        
         return {
             getSuccess: true,
+            isTelno: isTelno,
+            isElev: isElev,
             stn_telno: info[0].telno_info,
             elevater_txt: info[0].elevater_txt,
         }

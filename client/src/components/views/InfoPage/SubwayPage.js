@@ -82,6 +82,8 @@ function SubwayPage() {
         .then(response => {
           if(response.payload.getSuccess) {
             setStnInfo({
+              isTelno: response.payload.isTelno,
+              isElev: response.payload.isElev,
               stn_telno: response.payload.stn_telno,
               elevater_txt: response.payload.elevater_txt,
             })

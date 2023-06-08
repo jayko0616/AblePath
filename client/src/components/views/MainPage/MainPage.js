@@ -25,10 +25,10 @@ function MainPage() {
       <Header/>
       <body>
         <div className='btns'>
-        <button id="info" onClick={toInfoPage}>
+        <button class = "mainbutton" id="info" onClick={toInfoPage}>
           교통 정보
         </button>
-        <button id="route" onClick={toRouterPage}>
+        <button class = "mainbutton" id="route" onClick={toRouterPage}>
           길찾기
         </button>
         </div>

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import RMap from './RMap';
 import Path from './Path';
 import Search from './Search';
 import './RoutePage.css';
@@ -350,7 +349,7 @@ function RoutePage() {
         <Search id='search'></Search>
 
         <div class="map_wrap">
-        <div id="map" style={{width: '70%', height: '120%', position: 'relative', overflow: 'hidden'}}></div>
+        <div id="map" style={{width: '100%', height: '120%', position: 'relative', overflow: 'hidden'}}></div>
             <div id="menu_wrap" class="bg_white">
                 <div class="option">
                     <div>
@@ -381,11 +380,10 @@ function RoutePage() {
 
 
 
-        <button onClick={search_handler}>길찾기 검색</button>
+        <button className="route_search" onClick={search_handler}>길찾기 검색</button>
 
         <div id = 'routeDisplay'>
           {/*!map && <Map searchBody={searchBody}></Map>*/}
-          {<RMap></RMap>}
           {(routeList!==[]) && <Path className ='path' routeList={routeList} totalTime={totalTime}></Path>}
         </div>
 

@@ -16,4 +16,14 @@
     position: relative;
 }
 
+.route_search {
+    width: 50%;
+    height: 2em;
+    font-weight: 900;
+    font-size: large;
+    position: center;
+    text-align: center;
+    left: 50%;
+    
+}
 

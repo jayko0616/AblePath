@@ -316,15 +316,18 @@ function BusPageMap() {
                   kakao.maps.event.addListener(busmarker, 'click', function(){
                     for (let i = 0; i < response.payload.totalCnt; i++) {
                       const bus = response.payload.busArr[i];
+                      console.log(bus)
                       resultHTML += '<p>버스 번호: ' + bus.routeno + '</p>';
                       if(bus.vehicletp == '저상버스'){
-                        resultHTML += '<p>도착까지 남은 시간: ' + bus.arrtime + '초</p>';                      
+                        var min = parseInt((bus.arrtime%3600)/60);
+                        var sec = bus.arrtime%60;
+                        resultHTML += '<p>도착까지 남은 시간: ' + min + '분 '+ sec + '초</p>';                      
                       }
                       else {
                         resultHTML += '<p>해당 버스의 저상버스 도착예정은 없습니다.</p>';
                       }
                       resultHTML += '<hr>'
-                      document.getElementById('result').innerHTML = resultHTML;
+                      document.getElementById('results').innerHTML = resultHTML;
                   }
                   });
       
@@ -376,7 +379,8 @@ function BusPageMap() {
   
     return (
         <div class="map_wrap">
-        <div id="map" style={{marginTop: '3%', width: '100%', height: '100%', position: 'relative', overflow: 'hidden'}}></div>
+          
+          <div id="map" style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden',}}></div>
             <div id="menu_wrap" class="bg_white" style={{marginTop: '1%', width: '15%', height: '90%'}}>
                 <div class="option">
                     <div>
@@ -388,9 +392,9 @@ function BusPageMap() {
                 </div>
                 <hr/>
                 <ul id="placesList"></ul>
-                <div id="pagination"></div>
-            </div>
-            <p id='result'></p>
+              <div id="pagination"></div>
+          </div>
+          <div id='results'></div>
         </div>
     );
   }

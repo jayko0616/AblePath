@@ -6,14 +6,12 @@ import './BusPage.css';
 
 
 function BusPage() {
-
   return (
     <div>
       <Header />
       <div className='buspage'>
       <BusPageMap id = 'map'></BusPageMap>
       </div>
-      <Footer />
     </div>
   );
 }

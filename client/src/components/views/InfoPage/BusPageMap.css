@@ -34,3 +34,25 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+#submit_btn {
+    background-color: #f7d060;
+    color: #333333;
+    border: none;
+}
+
+.map_wrap{
+    display: block;
+}
+#result {
+    top: 10px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-size-adjust: 50%;
+}

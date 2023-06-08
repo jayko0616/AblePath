@@ -10,6 +10,14 @@ export function get_bus(dataToSubmit){
     }
 }
 
+export function get_arrive(dataToSubmit){
+    const request = axios.post('/info/bus/arrive', dataToSubmit)
+    .then(response => response.data)
+    return{
+        type: "bus_arrive",
+        payload: request
+    }
+}
 /*export async function train_arrival(dataToSubmit) {
   console.log("action reached")
   console.log(dataToSubmit.departId)

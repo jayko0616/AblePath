@@ -6,9 +6,9 @@ const bodyParser = require('body-parser');
 const get_route = require('./data/Route/route_search');
 const stn_nm_code = require('./data/Subway/stn-nm-code');
 const bus_station  = require ('./data/Bus/bus_station');
+const bus_arrive = require('./data/Bus/bus_arrive');
 
 const stn_info = require('./data/Subway/stn_info');
-const get_stId  = require ('./data/Bus/lowbus');
 const trainTable = require('./data/Train/trainTable');
 const realtime_arrival = require('./data/Subway/realtimeArrivalSubway');
 
@@ -105,6 +105,14 @@ app.post ('/info/bus/get', function(req, res){
     })
 })
 
+app.post ('/info/bus/arrive', function(req, res){
+    bus_arrive.get_arr_info(req.body)
+    .then(result => {
+        if(result.getSuccess === true){
+            console.log(result.busArr)
+        }
+    });
+});
 
 app.get('/route/map', (req, res) => {
     const map_key = require('./config/map_key.js')
@@ -122,9 +130,13 @@ app.post ('/info/train/getTraintable', function(req, res){
         }
         else{
             return  res.json(result);
+
         }
+
     })
 })
+
+
 
 
 

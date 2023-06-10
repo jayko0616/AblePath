@@ -18,14 +18,16 @@
 .route_search {
     width: 50%;
     border: none;
-    height: 2em;
+    height: 4em;
     font-weight: 900;
     background-color: #f7d060;
     color: #446ce3;
     font-size: large;
-    position: center;
+    position: relative;
     text-align: center;
     left: 50%;
+    transform: translateX(-50%);
+    border-radius:20px;
     
 }
 .search {
@@ -64,4 +66,17 @@
     height: 200%;
     border: none;
     border-radius:20px;
+}
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+#start_kw{
+    font-size: xx-large;
+}
+
+#end_kw{
+    font-size: xx-large;
 }

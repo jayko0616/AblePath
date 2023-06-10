@@ -300,42 +300,60 @@ function RoutePage() {
   //   document.getElementById("test_txt").innerText = body;
 
   // });
-  const search_handler = (e) => {
-    console.log(startPo.getLat().toString());
 
-    let body = {
+  function getCoordinates() {
+    return ({
       "startX": startPo.getLng().toString(),
       "startY": startPo.getLat().toString(),
       "endX": endPo.getLng().toString(),
       "endY": endPo.getLat().toString(),
-      // "startNm": startKw,
-      // "endNm": endKw,
-      "count" : 5,
-      "lang": 0,
-      "format":"json",
-      "searchDttm": '202301011200'
-    }
-
-    
-    
-    console.log(body)
-  //길찾기 api 호출 횟수 제한 때문에, 미리 저장해둔 데이터로 테스트용 
-  //setRouteList(testdata.metaData.plan.itineraries[0].legs);
-  //setTotalTime(parseInt(testdata.metaData.plan.itineraries[0].totalTime));
-  setSearchBody(body);
-  
-    dispatch(get_route(searchBody))
-        .then(response => {
-          if(response.payload.getSuccess){
-            console.log(response.payload);
-            setRouteList(response.payload.routeList.legs);
-            setTotalTime(response.payload.routeList.totalTime)
-          }
-        })
-        
- 
+    })
   }
 
+  async function search_handler() {
+    try{
+      const coordinates = await getCoordinates();
+      const startX = coordinates.startX;
+      const startY = coordinates.startY;
+      const endX = coordinates.endX;
+      const endY = coordinates.endY;
+
+      dispatch(get_route({
+        "startX": startX,
+        "startY": startY,
+        "endX": endX,
+        "endY": endY,
+        "count" : 5,
+        "lang": 0,
+        "format":"json",
+        "searchDttm": '202301011200'
+      }))
+          .then(response => {
+            if(response.payload.getSuccess){
+              console.log(response.payload);
+              setRouteList(response.payload.routeList.legs);
+              //var min = parseInt((response.payload.routeList.totalTime%3600)/60);
+              //var sec = response.payload.routeList.totalTime%60;
+              const secs = response.payload.routeList.totalTim;
+              var date;
+              if(secs < 3600) { //MM
+                date = new Date(secs * 1000).toISOString().substring(14, 19);
+                setTotalTime(date);
+              }
+              else {
+                date = new Date(secs * 1000).toISOString().substring(11, 16);
+                setTotalTime(date);
+              }
+              
+              setTotalTime(date)
+            }
+          })
+
+
+    }catch(e) {
+      console.log(e);
+    }
+  }
 
   useEffect(() => {
     initializeMap();

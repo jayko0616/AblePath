@@ -25,7 +25,7 @@ const Header = () => {
           <li><MenuItem to={'/route'}>길찾기</MenuItem></li>
           <li><MenuItem to= {'/info'}>교통정보</MenuItem></li>
         </ul>
-        
+
       </nav>
     </div>
     <script src="main.js"></script> 

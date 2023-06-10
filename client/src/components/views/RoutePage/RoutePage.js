@@ -386,9 +386,9 @@ function RoutePage() {
         </div>
         <div className='search'>
           <br></br><br></br><br></br>
-          <button id = "start_btn" type="submit">출발지로 선택</button> 
+          <button id = "start_btn" type="submit">출발지 선택</button> 
           <div id='start_kw'></div>
-          <button id = "end_btn" type="submit">도착지로 선택</button> 
+          <button id = "end_btn" type="submit">도착지 선택</button> 
           <div id='end_kw'></div>
           </div>
         <button className="route_search" onClick={search_handler}>길찾기 검색</button>

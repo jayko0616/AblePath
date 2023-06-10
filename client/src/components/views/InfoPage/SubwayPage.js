@@ -129,13 +129,13 @@ function SubwayPage() {
       
       <div className="subway-map-container" >
         
-        <LineComponent selectedComponent = {selectedComponent} onClick={clickHandler}/>
+        <LineComponent className="linecomponent" selectedComponent = {selectedComponent} onClick={clickHandler}/>
         {(realtime !== null) && <RealtimeBox  className="realtime" selectedStn = {selectedStn} 
           realtime={realtime} selectedLineTxt = {selectedLineTxt} stnInfo={stnInfo}/>}
 
         {/**선택된 라인 외에는 흐리게 나타내기 위한 요소 */}
         <div className={selected? "visible":"hidden"}>
-        <SubwayMap/>
+        <SubwayMap className="subwaymap"/>
         </div>
 
       </div>

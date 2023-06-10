@@ -51,7 +51,7 @@ function LineComponent(props) {
     
     const SelectLine = line[props.selectedComponent];
     
-    return <SelectLine selectedComponent = {props.selectedComponent} onClick={props.onClick}/>;
+    return <SelectLine style={{ maxWidth: "1177.5px"}}selectedComponent = {props.selectedComponent} onClick={props.onClick}/>;
 }
 
 export default LineComponent;

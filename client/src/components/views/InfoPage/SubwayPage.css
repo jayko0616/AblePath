@@ -1,5 +1,7 @@
 .subway-map-container{
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -82,4 +84,14 @@ select:focus {
   
 select:disabled {
     opacity: 0.5;
+}
+
+.linecomponent{
+    position: relative;
+    max-width: 1177.5px;
+}
+
+.subwaymap {
+    position: absolute;
+    max-width: 2342.5px;
 }

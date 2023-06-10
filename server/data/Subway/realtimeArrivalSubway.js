@@ -91,6 +91,7 @@ async function realtime_arrival(dataToSubmit) {
 
     }catch(errer){
         console.log(errer)
+        console.log(res.data);
         return {
             getSuccess: false
         }

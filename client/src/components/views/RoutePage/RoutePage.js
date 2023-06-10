@@ -366,20 +366,13 @@ function RoutePage() {
             </div>
             <p id='result'></p>
         </div>
-        <button id = "start_btn" type="submit" style={{width: '4cm', height: '2cm', position: 'relative', overflow: 'visible', fontSize: 'large'}}>출발지로 선택</button> 
-        <div id='start_kw'></div>
-        <button id = "end_btn" type="submit" style={{width: '4cm', height: '2cm', position: 'relative', overflow: 'visible', fontSize: 'large'}}>도착지로 선택</button> 
-        <div id='end_kw'></div>
-
-        <button id = "test_btn" type="submit" style={{width: '4cm', height: '2cm', position: 'relative', overflow: 'visible', fontSize: 'large'}}>테스트</button> 
-        <div id='test_txt'></div>
-
-
-
-
-
-
-
+        <div className='search'>
+          <br></br><br></br><br></br>
+          <button id = "start_btn" type="submit">출발지로 선택</button> 
+          <div id='start_kw'></div>
+          <button id = "end_btn" type="submit">도착지로 선택</button> 
+          <div id='end_kw'></div>
+          </div>
         <button className="route_search" onClick={search_handler}>길찾기 검색</button>
 
         <div id = 'routeDisplay'>

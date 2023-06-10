@@ -12,18 +12,56 @@
 
 #routeDisplay{
     width: 100%;
-    
     position: relative;
 }
 
 .route_search {
     width: 50%;
+    border: none;
     height: 2em;
     font-weight: 900;
+    background-color: #f7d060;
+    color: #446ce3;
     font-size: large;
     position: center;
     text-align: center;
     left: 50%;
     
 }
+.search {
+    margin-top: 100px;
+    display: inline;
+}
+#start_btn {
+    text-align: center;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: xx-large;
+    font-weight: 700;
+    background-color: #f7d060;
+    color: #446ce3;
+    margin: 5%;
+    width: 4em;
+    height: 200%;
+    border: none;
+    border-radius:20px;
+    
 
+}
+
+#end_btn {
+    
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: xx-large;
+    font-weight: 700;
+    background-color: #f7d060;
+    color: #446ce3;
+    margin: 5%;
+    width: 4em;
+    height: 200%;
+    border: none;
+    border-radius:20px;
+}

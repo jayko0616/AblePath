@@ -1,6 +1,6 @@
 .subway-map-container{
     position: relative;
-    width: 100%;
+    width: 200%;
     height: 100%;
 }
 
@@ -35,6 +35,7 @@
     display: none;
     z-index: -1; 
     opacity:0;
+    width: 200%;
 }
 
 
@@ -94,4 +95,5 @@ select:disabled {
 .subwaymap {
     position: absolute;
     max-width: 2342.5px;
+    width: 200%;
 }
